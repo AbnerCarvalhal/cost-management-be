@@ -71,6 +71,11 @@ CREATE TABLE tipologia_contratto (
 
 );
 
+CREATE TABLE utente (
+ email varchar(255) NOT NULL,
+ password varchar(255) NOT NULL,
+ PRIMARY KEY (email)
+);
 ALTER TABLE dipendente ADD CONSTRAINT dipendente_fk0 FOREIGN KEY (azienda_id) REFERENCES azienda(id)
 ;
 
