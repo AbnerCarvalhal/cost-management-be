@@ -10,12 +10,12 @@ import java.util.Date;
  * 
  */
 @Entity
+@Table(name="contratto")
 @NamedQuery(name="Contratto.findAll", query="SELECT c FROM Contratto c")
 public class Contratto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
 	@Column(name="costo_gg")

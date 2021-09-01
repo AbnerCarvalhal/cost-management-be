@@ -11,6 +11,7 @@ import java.util.List;
  * 
  */
 @Entity
+@Table(name="commessa")
 @NamedQuery(name="Commessa.findAll", query="SELECT c FROM Commessa c")
 public class Commessa implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -40,7 +41,7 @@ public class Commessa implements Serializable {
 
 	//bi-directional many-to-one association to DipendenteCommessa
 	@OneToMany(mappedBy="commessa")
-	private List<DipendenteCommessa> dipendenteCommesse;
+	private List<DipendenteCommessa> dipendenteCommessa;
 
 	public Commessa() {
 	}
@@ -101,23 +102,23 @@ public class Commessa implements Serializable {
 		this.cliente = cliente;
 	}
 
-	public List<DipendenteCommessa> getDipendenteCommessas() {
-		return this.dipendenteCommesse;
+	public List<DipendenteCommessa> getDipendenteCommesse() {
+		return this.dipendenteCommessa;
 	}
 
-	public void setDipendenteCommesse(List<DipendenteCommessa> dipendenteCommesse) {
-		this.dipendenteCommesse = dipendenteCommesse;
+	public void setDipendenteCommesse(List<DipendenteCommessa> dipendenteCommessa) {
+		this.dipendenteCommessa = dipendenteCommessa;
 	}
 
 	public DipendenteCommessa addDipendenteCommessa(DipendenteCommessa dipendenteCommessa) {
-		getDipendenteCommessas().add(dipendenteCommessa);
+		getDipendenteCommesse().add(dipendenteCommessa);
 		dipendenteCommessa.setCommessa(this);
 
 		return dipendenteCommessa;
 	}
 
 	public DipendenteCommessa removeDipendenteCommessa(DipendenteCommessa dipendenteCommessa) {
-		getDipendenteCommessas().remove(dipendenteCommessa);
+		getDipendenteCommesse().remove(dipendenteCommessa);
 		dipendenteCommessa.setCommessa(null);
 
 		return dipendenteCommessa;

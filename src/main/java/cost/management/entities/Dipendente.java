@@ -11,6 +11,7 @@ import java.util.List;
  * 
  */
 @Entity
+@Table(name="dipendente")
 @NamedQuery(name="Dipendente.findAll", query="SELECT d FROM Dipendente d")
 public class Dipendente implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -48,7 +49,7 @@ public class Dipendente implements Serializable {
 
 	//bi-directional many-to-one association to DipendenteCommessa
 	@OneToMany(mappedBy="dipendente")
-	private List<DipendenteCommessa> dipendenteCommesse;
+	private List<DipendenteCommessa> dipendenteCommessa;
 
 	public Dipendente() {
 	}
@@ -140,20 +141,6 @@ public class Dipendente implements Serializable {
 		return contratto;
 	}
 
-	public Dipendente(String codiceFiscale, String cellulare, String cognome, Date dataNascita, String domicilio,
-			String email, String luogoNascita, String nome, String residenza) {
-		super();
-		this.codiceFiscale = codiceFiscale;
-		this.cellulare = cellulare;
-		this.cognome = cognome;
-		this.dataNascita = dataNascita;
-		this.domicilio = domicilio;
-		this.email = email;
-		this.luogoNascita = luogoNascita;
-		this.nome = nome;
-		this.residenza = residenza;
-	}
-
 	public Contratto removeContratto(Contratto contratto) {
 		getContratti().remove(contratto);
 		contratto.setDipendente(null);
@@ -170,11 +157,11 @@ public class Dipendente implements Serializable {
 	}
 
 	public List<DipendenteCommessa> getDipendenteCommessas() {
-		return this.dipendenteCommesse;
+		return this.dipendenteCommessa;
 	}
 
-	public void setDipendenteCommessas(List<DipendenteCommessa> dipendenteCommessas) {
-		this.dipendenteCommesse = dipendenteCommessas;
+	public void setDipendenteCommessas(List<DipendenteCommessa> dipendenteCommessa) {
+		this.dipendenteCommessa = dipendenteCommessa;
 	}
 
 	public DipendenteCommessa addDipendenteCommessa(DipendenteCommessa dipendenteCommessa) {

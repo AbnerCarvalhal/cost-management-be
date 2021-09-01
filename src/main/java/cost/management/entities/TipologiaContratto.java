@@ -16,14 +16,13 @@ public class TipologiaContratto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
 	private String tipologia;
 
 	//bi-directional many-to-one association to Contratto
 	@OneToMany(mappedBy="tipologiaContrattoBean")
-	private List<Contratto> contratti;
+	private List<Contratto> contrattos;
 
 	public TipologiaContratto() {
 	}
@@ -44,28 +43,23 @@ public class TipologiaContratto implements Serializable {
 		this.tipologia = tipologia;
 	}
 
-	public List<Contratto> getContratti() {
-		return this.contratti;
+	public List<Contratto> getContrattos() {
+		return this.contrattos;
 	}
 
-	public void setContrattos(List<Contratto> contratti) {
-		this.contratti = contratti;
+	public void setContrattos(List<Contratto> contrattos) {
+		this.contrattos = contrattos;
 	}
 
 	public Contratto addContratto(Contratto contratto) {
-		getContratti().add(contratto);
+		getContrattos().add(contratto);
 		contratto.setTipologiaContrattoBean(this);
 
 		return contratto;
 	}
 
-	public TipologiaContratto(String tipologia) {
-		super();
-		this.tipologia = tipologia;
-	}
-
 	public Contratto removeContratto(Contratto contratto) {
-		getContratti().remove(contratto);
+		getContrattos().remove(contratto);
 		contratto.setTipologiaContrattoBean(null);
 
 		return contratto;
