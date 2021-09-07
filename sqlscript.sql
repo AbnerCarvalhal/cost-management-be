@@ -13,7 +13,7 @@ CREATE TABLE dipendente (
 );
 
 CREATE TABLE cliente (
- regione_sociale varchar(255) NOT NULL,
+ ragione_sociale varchar(255) NOT NULL,
  sede_legale varchar(255) NOT NULL,
  partita_iva varchar(11) NOT NULL,
  codice_fiscale varchar(11),
