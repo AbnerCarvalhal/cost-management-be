@@ -2,7 +2,7 @@ CREATE TABLE dipendente (
  azienda_id INT(255) NOT NULL,
  nome varchar(255) NOT NULL,
  cognome varchar(255) NOT NULL,
- codice_fiscale varchar(11) NOT NULL,
+ codice_fiscale varchar(16) NOT NULL,
  luogo_nascita varchar(255) NOT NULL,
  data_nascita DATE NOT NULL,
  residenza varchar(255) NOT NULL,
@@ -70,7 +70,10 @@ CREATE TABLE tipologia_contratto (
  PRIMARY KEY (id)
 
 );
-
+CREATE TABLE utente (
+  email varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  password varchar(255) COLLATE utf8_unicode_ci NOT NULL
+);
 ALTER TABLE dipendente ADD CONSTRAINT dipendente_fk0 FOREIGN KEY (azienda_id) REFERENCES azienda(id)
 ;
 
