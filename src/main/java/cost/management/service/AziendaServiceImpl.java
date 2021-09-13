@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import cost.management.entities.Azienda;
@@ -15,7 +16,8 @@ public class AziendaServiceImpl implements AziendaService {
 	
 	@Autowired
 	private AziendaRepository aziendaRepo;
-
+	
+	
 	Logger log = org.slf4j.LoggerFactory.getLogger(this.getClass());
 	
 	@Override
@@ -23,10 +25,10 @@ public class AziendaServiceImpl implements AziendaService {
 		
 		List<Azienda> listaAziende = new ArrayList<>();
 		listaAziende = aziendaRepo.findAll();
-		
+		//System.out.println("@@@@@@@ AZIENDA NOME FORM PORPERTIES :"+ aziendaNome);
 		if(!listaAziende.isEmpty()) {
 			
-			log.info("La lista di dipendenti e' piena");
+			log.info("La lista delle aziende e' piena");
 
 		
 			return listaAziende;
@@ -40,8 +42,14 @@ public class AziendaServiceImpl implements AziendaService {
 	@Override
 	public Azienda findAziendaById(String id) {
 		// TODO Auto-generated method stub
-		log.info("AZIENDA ID ************* "+ aziendaRepo.getById(Integer.parseInt(id)).getId());
-		return aziendaRepo.getById(Integer.parseInt(id));
+		log.info("AZIENDA ID ************* "+ aziendaRepo.findById(Integer.parseInt(id)).get());
+		return aziendaRepo.findById(Integer.parseInt(id)).get();
+	}
+
+	@Override
+	public Azienda findAziendaByNome(String aziendaNome) {
+		//System.out.println("################## "+ aziendaRepo.findAziendaByNome(aziendaNome));
+		return aziendaRepo.findAziendaByNome(aziendaNome);
 	}
 	
 }

@@ -10,4 +10,6 @@ public interface AziendaService {
 
 	Azienda findAziendaById(String id);
 
+	Azienda findAziendaByNome(String aziendaNome);
+
 }

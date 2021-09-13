@@ -20,6 +20,7 @@ public class TipologiaContratto implements Serializable {
 
 	private String tipologia;
 
+
 	//bi-directional many-to-one association to Contratto
 	@OneToMany(mappedBy="tipologiaContrattoBean")
 	private List<Contratto> contrattos;
@@ -34,6 +35,8 @@ public class TipologiaContratto implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	
 
 	public String getTipologia() {
 		return this.tipologia;

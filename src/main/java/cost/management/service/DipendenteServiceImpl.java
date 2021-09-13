@@ -67,7 +67,7 @@ public class DipendenteServiceImpl implements DipendenteService {
 			oldDipendente.setEmail(dipendente.getEmail());
 			oldDipendente.setResidenza(dipendente.getResidenza());
 			oldDipendente.setLuogoNascita(dipendente.getLuogoNascita());
-			System.out.println("*********** updated dipdendente " + oldDipendente + "**********************");
+			//System.out.println("*********** updated dipdendente " + oldDipendente + "**********************");
 			return addDipendente(oldDipendente,aziendaId);
 
 		} else {
@@ -92,7 +92,7 @@ public class DipendenteServiceImpl implements DipendenteService {
 		
 		//get age from data di nascita
 		for(Dipendente dipendente : listaDipendenti) {
-			System.out.println( "DATA NASCITA CONTROLLER :" +dipendente.getDataNascita());
+			//System.out.println( "DATA NASCITA CONTROLLER :" +dipendente.getDataNascita());
 			
 			LocalDate start = new java.sql.Date(dipendente.getDataNascita().getTime()).toLocalDate();
 			LocalDate end = LocalDate.now(); 
@@ -117,15 +117,15 @@ public class DipendenteServiceImpl implements DipendenteService {
 		Optional<Dipendente> dipendenteToDelete = dipRepo.findById(codiceFiscale);
 
 		if (dipendenteToDelete.isPresent()) {
-			log.info("***Dipendente trovato!***");
+			//log.info("***Dipendente trovato!***");
 
 		}
 		try {
 			dipRepo.deleteById(codiceFiscale);
-			log.info("***Dipendente cancellato!***");
+			//log.info("***Dipendente cancellato!***");
 
 		} catch (IllegalArgumentException ex) {
-			log.info("***Dipendente NON cancellato!***");
+			//.info("***Dipendente NON cancellato!***");
 			ex.printStackTrace();
 		}
 	}

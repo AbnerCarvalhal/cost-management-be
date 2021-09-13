@@ -5,14 +5,12 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-
 /**
  * The persistent class for the commessa database table.
  * 
  */
 @Entity
-@Table(name="commessa")
-@NamedQuery(name="Commessa.findAll", query="SELECT c FROM Commessa c")
+@NamedQuery(name = "Commessa.findAll", query = "SELECT c FROM Commessa c")
 public class Commessa implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -20,28 +18,28 @@ public class Commessa implements Serializable {
 	private String codice;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="data_fine_commessa")
+	@Column(name = "data_fine_commessa")
 	private Date dataFineCommessa;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="data_inizio_commessa")
+	@Column(name = "data_inizio_commessa")
 	private Date dataInizioCommessa;
 
-	@Column(name="descrizione_commessa")
+	@Column(name = "descrizione_commessa")
 	private String descrizioneCommessa;
 
 	private float importo;
 
-	@Column(name="tipologia_commessa")
+	@Column(name = "tipologia_commessa")
 	private String tipologiaCommessa;
 
-	//bi-directional many-to-one association to Cliente
+	// bi-directional many-to-one association to Cliente
 	@ManyToOne
 	private Cliente cliente;
 
-	//bi-directional many-to-one association to DipendenteCommessa
-	@OneToMany(mappedBy="commessa")
-	private List<DipendenteCommessa> dipendenteCommessa;
+	// bi-directional many-to-one association to DipendenteCommessa
+	@OneToMany(mappedBy = "commessa")
+	private List<DipendenteCommessa> dipendenteCommessas;
 
 	public Commessa() {
 	}
@@ -102,23 +100,23 @@ public class Commessa implements Serializable {
 		this.cliente = cliente;
 	}
 
-	public List<DipendenteCommessa> getDipendenteCommesse() {
-		return this.dipendenteCommessa;
+	public List<DipendenteCommessa> getDipendenteCommessas() {
+		return this.dipendenteCommessas;
 	}
 
-	public void setDipendenteCommesse(List<DipendenteCommessa> dipendenteCommessa) {
-		this.dipendenteCommessa = dipendenteCommessa;
+	public void setDipendenteCommessas(List<DipendenteCommessa> dipendenteCommessas) {
+		this.dipendenteCommessas = dipendenteCommessas;
 	}
 
 	public DipendenteCommessa addDipendenteCommessa(DipendenteCommessa dipendenteCommessa) {
-		getDipendenteCommesse().add(dipendenteCommessa);
+		getDipendenteCommessas().add(dipendenteCommessa);
 		dipendenteCommessa.setCommessa(this);
 
 		return dipendenteCommessa;
 	}
 
 	public DipendenteCommessa removeDipendenteCommessa(DipendenteCommessa dipendenteCommessa) {
-		getDipendenteCommesse().remove(dipendenteCommessa);
+		getDipendenteCommessas().remove(dipendenteCommessa);
 		dipendenteCommessa.setCommessa(null);
 
 		return dipendenteCommessa;

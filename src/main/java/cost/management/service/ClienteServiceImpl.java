@@ -28,7 +28,7 @@ public class ClienteServiceImpl implements ClienteService {
 	}
 	@Override
 	public List<Cliente> findByRagioneSocialeContaining(String rs){
-		return clienteRepository.findByRagioneSocialeContaining(rs);
+		return clienteRepository.findByRegioneSocialeContaining(rs);
 	}
 	@Override
 	public List<Cliente> findAll(){

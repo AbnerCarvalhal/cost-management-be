@@ -9,6 +9,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +31,8 @@ public class DipendenteController {
 
 	@Autowired
 	private DipendenteService dipService;
+	
+	
 	
 	// inserici un dipendente nel db
 	@PostMapping("/dipendenti/{id}")
@@ -56,8 +59,8 @@ public class DipendenteController {
 	@PutMapping("/dipendenti/{codiceFiscale}/{aziendaId}")
 	public Dipendente updateDipendente(@RequestBody Dipendente dipendente, 
 			@PathVariable String codiceFiscale, @PathVariable int aziendaId) {
-		System.out.println("INSIDE UPDATE METHOD CONTROLLER");
-		System.out.println("CODICE FISCALE :"+ codiceFiscale +"AZIENDAID :"+ aziendaId);
+		//System.out.println("INSIDE UPDATE METHOD CONTROLLER");
+		//System.out.println("CODICE FISCALE :"+ codiceFiscale +"AZIENDAID :"+ aziendaId);
 		return dipService.updateDipendente(dipendente, codiceFiscale,aziendaId);
 	}
 

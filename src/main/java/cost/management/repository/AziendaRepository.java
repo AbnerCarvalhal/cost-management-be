@@ -8,4 +8,6 @@ import cost.management.entities.Azienda;
 @Repository
 public interface AziendaRepository extends JpaRepository<Azienda, Integer> {
 
+	Azienda findAziendaByNome(String aziendaNome);
+
 }
