@@ -39,7 +39,7 @@ public class Commessa implements Serializable {
 
 	// bi-directional many-to-one association to DipendenteCommessa
 	@OneToMany(mappedBy = "commessa")
-	private List<DipendenteCommessa> dipendenteCommessas;
+	private List<DipendenteCommessa> dipendenteCommessa;
 
 	public Commessa() {
 	}
@@ -101,11 +101,11 @@ public class Commessa implements Serializable {
 	}
 
 	public List<DipendenteCommessa> getDipendenteCommessas() {
-		return this.dipendenteCommessas;
+		return this.dipendenteCommessa;
 	}
 
 	public void setDipendenteCommessas(List<DipendenteCommessa> dipendenteCommessas) {
-		this.dipendenteCommessas = dipendenteCommessas;
+		this.dipendenteCommessa = dipendenteCommessas;
 	}
 
 	public DipendenteCommessa addDipendenteCommessa(DipendenteCommessa dipendenteCommessa) {
