@@ -129,5 +129,12 @@ public class DipendenteServiceImpl implements DipendenteService {
 			ex.printStackTrace();
 		}
 	}
+	
+	@Override
+	public List<Dipendente> findAllDipendentes() {
+		
+		return dipRepo.findAll();
+		
+	}
 
 }

@@ -2,38 +2,52 @@ package cost.management.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 import java.util.List;
+
 
 /**
  * The persistent class for the cliente database table.
  * 
  */
 @Entity
-@NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c")
+@Table(name="cliente")
+@NamedQuery(name="Cliente.findAll", query="SELECT c FROM Cliente c")
 public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "partita_iva")
+	@Column(name="partita_iva")
+	@NotBlank(message = "partita iva obbligatoria")
+	@Pattern(regexp = "\\d{11}")
 	private String partitaIva;
 
-	@Column(name = "codice_fiscale")
+	@Column(name="codice_fiscale")
+	@NotBlank(message = "codice fiscale obbligatorio")
+	@Pattern(regexp = "\\d{11}")
 	private String codiceFiscale;
 
-	@Column(name = "codice_interscambio")
+	@Column(name="codice_interscambio")
+	@Pattern(regexp = "\\S{7}")
 	private String codiceInterscambio;
-
+	@Email
 	private String pec;
 
-	@Column(name = "regione_sociale")
-	private String regioneSociale;
+	@Column(name="ragione_sociale")
+	@Size(min = 1,max = 30,message = "ragione sociale obbligatoria")
+	private String ragioneSociale;
 
-	@Column(name = "sede_legale")
+	@Column(name="sede_legale")
+	@Size(min = 1,max = 30,message = "sede legale obbligatoria")
 	private String sedeLegale;
 
-	// bi-directional many-to-one association to Commessa
-	@OneToMany(mappedBy = "cliente")
-	private List<Commessa> commessas;
+	//bi-directional many-to-one association to Commessa
+	@OneToMany(mappedBy="cliente")
+	private List<Commessa> commesse;
 
 	public Cliente() {
 	}
@@ -70,12 +84,12 @@ public class Cliente implements Serializable {
 		this.pec = pec;
 	}
 
-	public String getRegioneSociale() {
-		return this.regioneSociale;
+	public String getRagioneSociale() {
+		return this.ragioneSociale;
 	}
 
-	public void setRegioneSociale(String regioneSociale) {
-		this.regioneSociale = regioneSociale;
+	public void setRagioneSociale(String ragioneSociale) {
+		this.ragioneSociale = ragioneSociale;
 	}
 
 	public String getSedeLegale() {
@@ -86,23 +100,23 @@ public class Cliente implements Serializable {
 		this.sedeLegale = sedeLegale;
 	}
 
-	public List<Commessa> getCommessas() {
-		return this.commessas;
+	public List<Commessa> getCommesse() {
+		return this.commesse;
 	}
 
-	public void setCommessas(List<Commessa> commessas) {
-		this.commessas = commessas;
+	public void setCommesse(List<Commessa> commesse) {
+		this.commesse = commesse;
 	}
 
 	public Commessa addCommessa(Commessa commessa) {
-		getCommessas().add(commessa);
+		getCommesse().add(commessa);
 		commessa.setCliente(this);
 
 		return commessa;
 	}
 
 	public Commessa removeCommessa(Commessa commessa) {
-		getCommessas().remove(commessa);
+		getCommesse().remove(commessa);
 		commessa.setCliente(null);
 
 		return commessa;
