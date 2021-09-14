@@ -38,8 +38,10 @@ public class DipendenteCommessa implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="commessa_codice", insertable=false, updatable=false)
 	private Commessa commessa;
+
 	public DipendenteCommessa() {
 	}
+	
 
 	public DipendenteCommessaPK getId() {
 		return this.id;

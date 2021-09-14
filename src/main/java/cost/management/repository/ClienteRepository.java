@@ -12,7 +12,7 @@ import cost.management.entities.Cliente;
 @Transactional
 public interface ClienteRepository extends JpaRepository<Cliente, String>{
 	
-	public List<Cliente> findByRagioneSocialeContaining(String ragioneSociale);
+	public List<Cliente> findByRegioneSocialeContaining(String regioneSociale);
 	public Cliente findByPartitaIva(String partitaIva);
 	public List<Cliente> findByPartitaIvaContaining(String partitaIva);
 	public List<Cliente> findByCodiceFiscaleContaining(String codiceFiscale);

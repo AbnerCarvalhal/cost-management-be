@@ -9,10 +9,6 @@ import javax.persistence.*;
  * 
  */
 @Entity
-<<<<<<< HEAD
-@Table(name="utente")
-=======
->>>>>>> e320b1b8ce9f8c5b80cb3e20b22daed2105f55cd
 @NamedQuery(name="Utente.findAll", query="SELECT u FROM Utente u")
 public class Utente implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -33,22 +29,12 @@ public class Utente implements Serializable {
 		this.email = email;
 	}
 
-<<<<<<< HEAD
 	public String getPassword() {
 		return this.password;
 	}
 
-=======
->>>>>>> e320b1b8ce9f8c5b80cb3e20b22daed2105f55cd
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-<<<<<<< HEAD
-=======
-	public String getPassword() {
-		return this.password;
-	}
-
->>>>>>> e320b1b8ce9f8c5b80cb3e20b22daed2105f55cd
 }
