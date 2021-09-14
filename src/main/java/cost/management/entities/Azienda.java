@@ -10,21 +10,27 @@ import java.util.List;
  * 
  */
 @Entity
-@Table(name="azienda")
 @NamedQuery(name="Azienda.findAll", query="SELECT a FROM Azienda a")
 public class Azienda implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
+	@Column(name="nome")
 	private String nome;
 
 	//bi-directional many-to-one association to Dipendente
 	@OneToMany(mappedBy="azienda")
-	private List<Dipendente> dipendentes;
+	private List<Dipendente> dipendenti;
 
 	public Azienda() {
+	}
+
+	public Azienda(String nome) {
+		super();
+		this.nome = nome;
 	}
 
 	public int getId() {
@@ -42,27 +48,27 @@ public class Azienda implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-	public List<Dipendente> getDipendentes() {
-		return this.dipendentes;
+	/*
+	public List<Dipendente> getDipendenti() {
+		return this.dipendenti;
 	}
 
-	public void setDipendentes(List<Dipendente> dipendentes) {
-		this.dipendentes = dipendentes;
+	public void setDipendenti(List<Dipendente> dipendenti) {
+		this.dipendenti = dipendenti;
 	}
 
 	public Dipendente addDipendente(Dipendente dipendente) {
-		getDipendentes().add(dipendente);
+		getDipendenti().add(dipendente);
 		dipendente.setAzienda(this);
 
 		return dipendente;
 	}
 
 	public Dipendente removeDipendente(Dipendente dipendente) {
-		getDipendentes().remove(dipendente);
+		getDipendenti().remove(dipendente);
 		dipendente.setAzienda(null);
 
 		return dipendente;
 	}
-
+*/
 }
