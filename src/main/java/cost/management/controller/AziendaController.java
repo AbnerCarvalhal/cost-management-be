@@ -37,7 +37,7 @@ public class AziendaController {
 	
 	@GetMapping("/aziende/nome")
 	public Azienda findAziendaByName() {
-		//System.out.println("INSIDE TEST CONTROLLER FIND  AZIENDE BY NOME");
+		System.out.println("INSIDE TEST CONTROLLER FIND  AZIENDE BY NOME");
 		return aziendaService.findAziendaByNome(nomeAzienda);
 		
 	}
