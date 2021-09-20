@@ -2,6 +2,9 @@ package cost.management.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 import java.util.List;
 
@@ -18,10 +21,12 @@ public class Commessa implements Serializable {
 	private String codice;
 
 	@Temporal(TemporalType.DATE)
+	//@JsonFormat(pattern="dd/MM/yyyy",shape=JsonFormat.Shape.STRING)
 	@Column(name = "data_fine_commessa")
 	private Date dataFineCommessa;
 
 	@Temporal(TemporalType.DATE)
+	//@JsonFormat(pattern="dd/MM/yyyy",shape=JsonFormat.Shape.STRING)
 	@Column(name = "data_inizio_commessa")
 	private Date dataInizioCommessa;
 
@@ -39,7 +44,7 @@ public class Commessa implements Serializable {
 
 	// bi-directional many-to-one association to DipendenteCommessa
 	@OneToMany(mappedBy = "commessa")
-	private List<DipendenteCommessa> dipendenteCommessas;
+	private List<DipendenteCommessa> dipendenteCommessa;
 
 	public Commessa() {
 	}
@@ -101,11 +106,11 @@ public class Commessa implements Serializable {
 	}
 
 	public List<DipendenteCommessa> getDipendenteCommessas() {
-		return this.dipendenteCommessas;
+		return this.dipendenteCommessa;
 	}
 
 	public void setDipendenteCommessas(List<DipendenteCommessa> dipendenteCommessas) {
-		this.dipendenteCommessas = dipendenteCommessas;
+		this.dipendenteCommessa = dipendenteCommessas;
 	}
 
 	public DipendenteCommessa addDipendenteCommessa(DipendenteCommessa dipendenteCommessa) {
