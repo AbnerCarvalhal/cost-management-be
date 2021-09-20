@@ -4,6 +4,6 @@ import cost.management.entities.Commessa;
 
 public interface CommessaService {
 
-	Commessa addCommessa(Commessa commessa);
+	Commessa addCommessa(Commessa commessa, String id);
 
 }
