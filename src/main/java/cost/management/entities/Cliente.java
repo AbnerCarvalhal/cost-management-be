@@ -7,6 +7,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.List;
 
 
@@ -30,10 +32,11 @@ public class Cliente implements Serializable {
 	@NotBlank(message = "codice fiscale obbligatorio")
 	@Pattern(regexp = "\\d{11}")
 	private String codiceFiscale;
-
+	
 	@Column(name="codice_interscambio")
 	@Pattern(regexp = "\\S{7}")
 	private String codiceInterscambio;
+	
 	@Email
 	private String pec;
 
@@ -47,6 +50,7 @@ public class Cliente implements Serializable {
 
 	//bi-directional many-to-one association to Commessa
 	@OneToMany(mappedBy="cliente")
+	@JsonManagedReference
 	private List<Commessa> commesse;
 
 	public Cliente() {

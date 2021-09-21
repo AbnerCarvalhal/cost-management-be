@@ -18,10 +18,11 @@ public class CommessaServiceImpl implements CommessaService {
 	
 	
 	@Override
-	public Commessa addCommessa(Commessa commessa, String id) {
-		Cliente cliente = clienteService.findByPartitaIva(id);
-		commessa.setCliente(cliente);
+	public Commessa addCommessa(Commessa commessa, String ragioneSociale) {
 		
+		Cliente cliente = clienteService.findByRagioneSocialeContaining(ragioneSociale).get(0);
+		System.out.println("CLIENTE FROM RAGIONE SOCIALE "+ cliente.getRagioneSociale());
+		commessa.setCliente(cliente);
 		
 		return commessaRepo.save(commessa);
 	}

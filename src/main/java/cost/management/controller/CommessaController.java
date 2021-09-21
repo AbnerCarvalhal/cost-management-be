@@ -21,8 +21,8 @@ public class CommessaController {
 	@Autowired
 	private CommessaService commessaService;
 	
-	@PostMapping("/commesse/{id}")
-	private Commessa addCommessa(@RequestBody Commessa commessa, @PathVariable String id) {
+	@PostMapping("/commesse/{ragioneSociale}")
+	private Commessa addCommessa(@RequestBody Commessa commessa, @PathVariable String ragioneSociale) {
 		System.out.println("###### INSIDE COMMESSE CONTROLLER");
 		System.out.println(commessa.getDescrizioneCommessa());
 		System.out.println(commessa.getCodice());
@@ -31,9 +31,9 @@ public class CommessaController {
 
 		System.out.println(commessa.getDataInizioCommessa());
 		System.out.println(commessa.getDataFineCommessa());
+		System.out.println("###### Ragione sociale :"+ ragioneSociale);
 
-
-		return commessaService.addCommessa(commessa, id);
+		return commessaService.addCommessa(commessa, ragioneSociale);
 		
 	}
 }

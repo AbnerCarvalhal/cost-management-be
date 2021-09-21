@@ -3,6 +3,7 @@ package cost.management.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
@@ -26,7 +27,6 @@ public class Commessa implements Serializable {
 	private Date dataFineCommessa;
 
 	@Temporal(TemporalType.DATE)
-	//@JsonFormat(pattern="dd/MM/yyyy",shape=JsonFormat.Shape.STRING)
 	@Column(name = "data_inizio_commessa")
 	private Date dataInizioCommessa;
 
@@ -40,6 +40,7 @@ public class Commessa implements Serializable {
 
 	// bi-directional many-to-one association to Cliente
 	@ManyToOne
+	@JsonBackReference
 	private Cliente cliente;
 
 	// bi-directional many-to-one association to DipendenteCommessa
@@ -47,7 +48,10 @@ public class Commessa implements Serializable {
 	private List<DipendenteCommessa> dipendenteCommessa;
 
 	public Commessa() {
+		
+		
 	}
+	
 
 	public String getCodice() {
 		return this.codice;
@@ -105,23 +109,23 @@ public class Commessa implements Serializable {
 		this.cliente = cliente;
 	}
 
-	public List<DipendenteCommessa> getDipendenteCommessas() {
+	public List<DipendenteCommessa> getDipendenteCommessa() {
 		return this.dipendenteCommessa;
 	}
 
-	public void setDipendenteCommessas(List<DipendenteCommessa> dipendenteCommessas) {
+	public void setDipendenteCommessa(List<DipendenteCommessa> dipendenteCommessas) {
 		this.dipendenteCommessa = dipendenteCommessas;
 	}
 
 	public DipendenteCommessa addDipendenteCommessa(DipendenteCommessa dipendenteCommessa) {
-		getDipendenteCommessas().add(dipendenteCommessa);
+		getDipendenteCommessa().add(dipendenteCommessa);
 		dipendenteCommessa.setCommessa(this);
 
 		return dipendenteCommessa;
 	}
 
 	public DipendenteCommessa removeDipendenteCommessa(DipendenteCommessa dipendenteCommessa) {
-		getDipendenteCommessas().remove(dipendenteCommessa);
+		getDipendenteCommessa().remove(dipendenteCommessa);
 		dipendenteCommessa.setCommessa(null);
 
 		return dipendenteCommessa;
