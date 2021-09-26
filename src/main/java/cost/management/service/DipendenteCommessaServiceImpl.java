@@ -31,6 +31,7 @@ public class DipendenteCommessaServiceImpl implements DipendenteCommessaService 
 		
 		Dipendente dipendente  =dipendenteRepo.findById(dipendenteid).get();
 		dipendenteCommessa.setDipendente(dipendente);
+		System.out.println("SERVICE@@@@@@@ :"+dipendenteCommessa.getDipendente().getCodiceFiscale().toString());
 		return dipCommRepo.save(dipendenteCommessa);
 		
 	}

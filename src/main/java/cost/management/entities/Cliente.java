@@ -50,7 +50,7 @@ public class Cliente implements Serializable {
 
 	//bi-directional many-to-one association to Commessa
 	@OneToMany(mappedBy="cliente")
-	@JsonManagedReference
+	@JsonManagedReference(value="commesse-cliente")
 	private List<Commessa> commesse;
 
 	public Cliente() {
@@ -71,6 +71,7 @@ public class Cliente implements Serializable {
 	public void setCodiceFiscale(String codiceFiscale) {
 		this.codiceFiscale = codiceFiscale;
 	}
+	
 
 	public String getCodiceInterscambio() {
 		return this.codiceInterscambio;

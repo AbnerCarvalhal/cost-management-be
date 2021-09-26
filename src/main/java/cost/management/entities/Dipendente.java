@@ -13,6 +13,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.util.Date;
 import java.util.List;
@@ -73,6 +74,7 @@ public class Dipendente implements Serializable {
 
 	//bi-directional many-to-one association to DipendenteCommessa
 	@OneToMany(mappedBy="dipendente")
+	@JsonManagedReference(value="dipendente-commessa2")
 	private List<DipendenteCommessa> dipendenteCommesse;
 
 	private long age;
@@ -202,7 +204,7 @@ public class Dipendente implements Serializable {
 		this.azienda = azienda;
 	}
 	
-	/*
+	
 	public List<DipendenteCommessa> getDipendenteCommessas() {
 		return this.dipendenteCommesse;
 	}
@@ -224,7 +226,7 @@ public class Dipendente implements Serializable {
 
 		return dipendenteCommessa;
 	}
-	*/
+	
 
 	@Override
 	public String toString() {
