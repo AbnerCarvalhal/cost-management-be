@@ -75,7 +75,7 @@ public class Dipendente implements Serializable {
 	//bi-directional many-to-one association to DipendenteCommessa
 	@OneToMany(mappedBy="dipendente")
 	@JsonManagedReference(value="dipendente-commessa2")
-	private List<DipendenteCommessa> dipendenteCommesse;
+	private List<DipendenteCommessa> dipendenteCommessa;
 
 	private long age;
 	
@@ -196,6 +196,7 @@ public class Dipendente implements Serializable {
 	}
 	
 	
+	
 	public Azienda getAzienda() {
 		return this.azienda;
 	}
@@ -205,23 +206,23 @@ public class Dipendente implements Serializable {
 	}
 	
 	
-	public List<DipendenteCommessa> getDipendenteCommessas() {
-		return this.dipendenteCommesse;
+	public List<DipendenteCommessa> getDipendenteCommessa() {
+		return this.dipendenteCommessa;
 	}
 
-	public void setDipendenteCommessas(List<DipendenteCommessa> dipendenteCommessas) {
-		this.dipendenteCommesse = dipendenteCommessas;
+	public void setDipendenteCommessa(List<DipendenteCommessa> dipendenteCommessa) {
+		this.dipendenteCommessa = dipendenteCommessa;
 	}
 
 	public DipendenteCommessa addDipendenteCommessa(DipendenteCommessa dipendenteCommessa) {
-		getDipendenteCommessas().add(dipendenteCommessa);
+		getDipendenteCommessa().add(dipendenteCommessa);
 		dipendenteCommessa.setDipendente(this);
 
 		return dipendenteCommessa;
 	}
 
 	public DipendenteCommessa removeDipendenteCommessa(DipendenteCommessa dipendenteCommessa) {
-		getDipendenteCommessas().remove(dipendenteCommessa);
+		getDipendenteCommessa().remove(dipendenteCommessa);
 		dipendenteCommessa.setDipendente(null);
 
 		return dipendenteCommessa;

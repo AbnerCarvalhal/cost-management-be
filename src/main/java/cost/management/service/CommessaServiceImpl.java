@@ -1,5 +1,7 @@
 package cost.management.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +27,10 @@ public class CommessaServiceImpl implements CommessaService {
 		commessa.setCliente(cliente);
 		
 		return commessaRepo.save(commessa);
+	}
+	
+	public List<Commessa> findAllCommesse(){
+		return commessaRepo.findAll();
 	}
 
 }

@@ -25,17 +25,18 @@ public class DipendenteCommessa implements Serializable {
 	
 
 	@Temporal(TemporalType.DATE)
-	@JsonFormat(pattern="dd/MM/yyyy",shape=JsonFormat.Shape.STRING)
+	//@JsonFormat(pattern="dd/MM/yyyy",shape=JsonFormat.Shape.STRING)
 	@Column(name="data_fine_attivita")
 	private Date dataFineAttivita;
 
 	@Temporal(TemporalType.DATE)
-	@JsonFormat(pattern="dd/MM/yyyy",shape=JsonFormat.Shape.STRING)
+	//@JsonFormat(pattern="dd/MM/yyyy",shape=JsonFormat.Shape.STRING)
 	@Column(name="data_inizio_attivita")
 	private Date dataInizioAttivita;
 
 	@Column(name="tariffa_gg")
 	private int tariffaGg;
+	
 
 	//bi-directional many-to-one association to Dipendente
 	@ManyToOne
