@@ -3,23 +3,32 @@ package cost.management.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import org.springframework.stereotype.Component;
+
 /**
  * The primary key class for the dipendente_commessa database table.
  * 
  */
+
 @Embeddable
 public class DipendenteCommessaPK implements Serializable {
 	//default serial version id, required for serializable classes.
 	private static final long serialVersionUID = 1L;
 
-	@Column(name="dipendente_codice_fiscale", insertable=false, updatable=false)
+	@Column(name="dipendente_codice_fiscale", nullable=false, insertable=false, updatable=false)
 	private String dipendenteCodiceFiscale;
 
-	@Column(name="commessa_codice", insertable=false, updatable=false)
+	@Column(name="commessa_codice", nullable=false, insertable=false, updatable=false)
 	private String commessaCodice;
 
 	public DipendenteCommessaPK() {
 	}
+	
+//	public DipendenteCommessaPK(String dipendenteCodiceFiscale, String commessaCodice) {
+//		this.dipendenteCodiceFiscale = dipendenteCodiceFiscale;
+//		this.commessaCodice = commessaCodice;
+//		
+//	}
 	public String getDipendenteCodiceFiscale() {
 		return this.dipendenteCodiceFiscale;
 	}

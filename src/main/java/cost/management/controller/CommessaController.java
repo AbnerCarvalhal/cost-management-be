@@ -1,7 +1,10 @@
 	package cost.management.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,8 +24,8 @@ public class CommessaController {
 	@Autowired
 	private CommessaService commessaService;
 	
-	@PostMapping("/commesse/{id}")
-	private Commessa addCommessa(@RequestBody Commessa commessa, @PathVariable String id) {
+	@PostMapping("/commesse/{ragioneSociale}")
+	private Commessa addCommessa(@RequestBody Commessa commessa, @PathVariable String ragioneSociale) {
 		System.out.println("###### INSIDE COMMESSE CONTROLLER");
 		System.out.println(commessa.getDescrizioneCommessa());
 		System.out.println(commessa.getCodice());
@@ -31,9 +34,14 @@ public class CommessaController {
 
 		System.out.println(commessa.getDataInizioCommessa());
 		System.out.println(commessa.getDataFineCommessa());
+		System.out.println("###### Ragione sociale :"+ ragioneSociale);
 
-
-		return commessaService.addCommessa(commessa, id);
+		return commessaService.addCommessa(commessa, ragioneSociale);
 		
+	}
+	@GetMapping("/commesse")
+	public List<Commessa> findAllCommesse() {
+		
+		return commessaService.findAllCommesse();
 	}
 }

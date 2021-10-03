@@ -3,7 +3,9 @@ package cost.management.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.util.Date;
 
@@ -20,27 +22,31 @@ public class DipendenteCommessa implements Serializable {
 
 	@EmbeddedId
 	private DipendenteCommessaPK id;
+	
 
 	@Temporal(TemporalType.DATE)
-	@JsonFormat(pattern="dd/MM/yyyy",shape=JsonFormat.Shape.STRING)
+	//@JsonFormat(pattern="dd/MM/yyyy",shape=JsonFormat.Shape.STRING)
 	@Column(name="data_fine_attivita")
 	private Date dataFineAttivita;
 
 	@Temporal(TemporalType.DATE)
-	@JsonFormat(pattern="dd/MM/yyyy",shape=JsonFormat.Shape.STRING)
+	//@JsonFormat(pattern="dd/MM/yyyy",shape=JsonFormat.Shape.STRING)
 	@Column(name="data_inizio_attivita")
 	private Date dataInizioAttivita;
 
 	@Column(name="tariffa_gg")
 	private int tariffaGg;
+	
 
 	//bi-directional many-to-one association to Dipendente
 	@ManyToOne
+	@JsonBackReference(value="dipendente-commessa2")
 	@JoinColumn(name= "dipendente_codice_fiscale" ,insertable=false, updatable=false)
 	private Dipendente dipendente;
 
 	//bi-directional many-to-one association to Commessa
 	@ManyToOne
+	@JsonBackReference(value="dipendente-commessa1")
 	@JoinColumn(name="commessa_codice", insertable=false, updatable=false)
 	private Commessa commessa;
 

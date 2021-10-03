@@ -1,5 +1,7 @@
 package cost.management.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,12 +20,17 @@ public class CommessaServiceImpl implements CommessaService {
 	
 	
 	@Override
-	public Commessa addCommessa(Commessa commessa, String id) {
-		Cliente cliente = clienteService.findByPartitaIva(id);
+	public Commessa addCommessa(Commessa commessa, String ragioneSociale) {
+		
+		Cliente cliente = clienteService.findByRagioneSocialeContaining(ragioneSociale).get(0);
+		System.out.println("CLIENTE FROM RAGIONE SOCIALE "+ cliente.getRagioneSociale());
 		commessa.setCliente(cliente);
 		
-		
 		return commessaRepo.save(commessa);
+	}
+	
+	public List<Commessa> findAllCommesse(){
+		return commessaRepo.findAll();
 	}
 
 }
