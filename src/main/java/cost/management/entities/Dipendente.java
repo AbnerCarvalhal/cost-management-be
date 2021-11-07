@@ -1,4 +1,4 @@
-package cost.management.entities;
+	package cost.management.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -72,8 +72,8 @@ public class Dipendente implements Serializable {
 	private Azienda azienda;
 
 	//bi-directional many-to-one association to DipendenteCommessa
-	//@OneToMany(mappedBy="dipendente")
-	//private List<DipendenteCommessa> dipendenteCommesse;
+	@OneToMany(mappedBy="dipendente")
+	private List<DipendenteCommessa> dipendenteCommesse;
 
 	private long age;
 	

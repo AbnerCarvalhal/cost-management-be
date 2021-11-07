@@ -28,7 +28,7 @@ public class ClienteServiceImpl implements ClienteService {
 	}
 	@Override
 	public List<Cliente> findByRagioneSocialeContaining(String rs){
-		return clienteRepository.findByRegioneSocialeContaining(rs);
+		return clienteRepository.findByRagioneSocialeContaining(rs);
 	}
 	@Override
 	public List<Cliente> findAll(){
@@ -56,7 +56,7 @@ public class ClienteServiceImpl implements ClienteService {
 	@Override
 	public Cliente updateCliente(Cliente cli,String id) {
 		if(isValidId(id)) {
-			cli.setCodiceFiscale(id);
+			cli.setPartitaIva(id);
 			return clienteRepository.save(cli);
 		}return null;
 	}
