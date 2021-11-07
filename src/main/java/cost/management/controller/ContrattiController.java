@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,12 +39,12 @@ public class ContrattiController {
 	@Autowired
 	private ContrattoService contrattoService;
 	
+	Logger logger = LoggerFactory.getLogger(ContrattiController.class);
+	
 	@GetMapping("/daticontratti")
 	public ArrayList<DatiContrattuali> getDatiContrattuali() {
 		
 		ArrayList<DatiContrattuali> daticontrattuali = new ArrayList<DatiContrattuali>();
-		
-		List<TipologiaContratto> tipologiecontratti = tipologiaContrattoService.findAllContratto();
 		
 		List<Dipendente> dipendentes = dipendenteService.findAllDipendentes();
 		
@@ -50,8 +52,7 @@ public class ContrattiController {
 			daticontrattuali.add(new DatiContrattuali(dipendente.getCodiceFiscale(),
 					dipendente.getAzienda().getNome(),
 					dipendente.getNome(),
-					dipendente.getCognome(),
-					tipologiecontratti));
+					dipendente.getCognome()));
 		}
 		
 		return daticontrattuali;

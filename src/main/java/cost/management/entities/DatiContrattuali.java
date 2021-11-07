@@ -13,18 +13,15 @@ public class DatiContrattuali {
 	
 	private String cognome;
 	
-	private List<TipologiaContratto> tipologiecontratto;
 	
 	public DatiContrattuali() {
 	}
 
-	public DatiContrattuali(String codiceFiscale, String azienda, String nome, String cognome,
-			List<TipologiaContratto> tipologiecontratto) {
+	public DatiContrattuali(String codiceFiscale, String azienda, String nome, String cognome) {
 		this.codiceFiscale = codiceFiscale;
 		this.azienda = azienda;
 		this.nome = nome;
 		this.cognome = cognome;
-		this.tipologiecontratto = tipologiecontratto;
 	}
 
 	public String getCodiceFiscale() {
@@ -57,14 +54,6 @@ public class DatiContrattuali {
 
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
-	}
-
-	public List<TipologiaContratto> getTipologiecontratto() {
-		return tipologiecontratto;
-	}
-
-	public void setTipologiecontratto(List<TipologiaContratto> tipologiecontratto) {
-		this.tipologiecontratto = tipologiecontratto;
 	}
 	
 	
